@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide Médecine Canada — Du Bac Marocain au MD</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0e17;
+  --bg2:#111827;
+  --bg3:#1a2236;
+  --card:#151d2e;
+  --border:#2a3654;
+  --text:#e2e8f0;
+  --text2:#94a3b8;
+  --accent:#f43f5e;
+  --accent2:#fb923c;
+  --accent3:#a78bfa;
+  --accent4:#34d399;
+  --accent5:#38bdf8;
+  --gold:#fbbf24;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans','Segoe UI',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:var(--accent5);text-decoration:none;transition:color .2s}
+a:hover{color:var(--accent3);text-decoration:underline}
+
+/* === HERO === */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:2rem;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 600px 400px at 30% 20%,rgba(244,63,94,.12),transparent),
+    radial-gradient(ellipse 500px 500px at 70% 70%,rgba(167,139,250,.1),transparent),
+    radial-gradient(ellipse 400px 300px at 50% 50%,rgba(56,189,248,.06),transparent);
+  pointer-events:none;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.25);
+  border-radius:100px;padding:.4rem 1.2rem;
+  font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:2rem;animation:fadeInUp .8s ease both;
+}
+.hero h1{
+  font-family:var(--serif);font-size:clamp(2.2rem,5.5vw,4.5rem);
+  font-weight:900;line-height:1.1;max-width:950px;animation:fadeInUp .8s .15s ease both;
+}
+.hero h1 .highlight{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero p.subtitle{
+  font-size:clamp(1rem,2vw,1.2rem);color:var(--text2);
+  max-width:680px;margin-top:1.5rem;animation:fadeInUp .8s .3s ease both;
+}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;animation:fadeInUp .8s .45s ease both;flex-wrap:wrap;justify-content:center}
+.hero-stats .stat{text-align:center}
+.hero-stats .stat-val{font-family:var(--serif);font-size:2rem;font-weight:700}
+.hero-stats .stat-val.red{color:var(--accent)}
+.hero-stats .stat-val.purple{color:var(--accent3)}
+.hero-stats .stat-val.green{color:var(--accent4)}
+.hero-stats .stat-val.blue{color:var(--accent5)}
+.hero-stats .stat-label{font-size:.72rem;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem}
+.scroll-cue{
+  position:absolute;bottom:2rem;display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  color:var(--text2);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;animation:bounce 2s infinite;
+}
+.scroll-cue svg{width:20px;height:20px}
+
+/* === NAV === */
+.sticky-nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,14,23,.88);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);padding:.6rem 1.5rem;
+  display:flex;gap:.25rem;overflow-x:auto;scrollbar-width:none;
+}
+.sticky-nav::-webkit-scrollbar{display:none}
+.sticky-nav a{
+  white-space:nowrap;font-size:.72rem;font-weight:500;
+  padding:.4rem .8rem;border-radius:8px;color:var(--text2);text-decoration:none;transition:all .2s;
+}
+.sticky-nav a:hover,.sticky-nav a.active{background:rgba(244,63,94,.12);color:var(--accent)}
+
+/* === SECTIONS === */
+section{padding:5rem 1.5rem;max-width:1100px;margin:0 auto}
+.section-label{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:1rem;
+}
+.section-label .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+section h2{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:.6rem;line-height:1.2}
+section h2 .hl{color:var(--accent)}
+section .intro{color:var(--text2);max-width:720px;margin-bottom:2.5rem;font-size:1.02rem}
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--border),transparent);margin:0 auto;max-width:600px}
+
+/* === CARDS === */
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-3px);border-color:rgba(244,63,94,.35)}
+
+/* === GLOSSARY === */
+.glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+.gloss-card{position:relative;overflow:hidden}
+.gloss-card .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem}
+.gloss-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.4rem}
+.gloss-card .abbr{font-family:var(--mono);font-size:.68rem;background:rgba(167,139,250,.12);color:var(--accent3);padding:.15rem .5rem;border-radius:4px;margin-left:.5rem}
+.gloss-card p{color:var(--text2);font-size:.9rem}
+.icon-red{background:rgba(244,63,94,.12);color:var(--accent)}
+.icon-purple{background:rgba(167,139,250,.12);color:var(--accent3)}
+.icon-green{background:rgba(52,211,153,.12);color:var(--accent4)}
+.icon-blue{background:rgba(56,189,248,.12);color:var(--accent5)}
+.icon-gold{background:rgba(251,191,36,.12);color:var(--gold)}
+.icon-orange{background:rgba(251,146,60,.12);color:var(--accent2)}
+
+/* === ROADMAP === */
+.roadmap{position:relative;padding-left:3rem}
+.roadmap::before{
+  content:'';position:absolute;left:14px;top:0;bottom:0;width:2px;
+  background:linear-gradient(to bottom,var(--gold),var(--accent),var(--accent2),var(--accent3),var(--accent4),var(--accent5));border-radius:2px;
+}
+.road-step{position:relative;margin-bottom:2.5rem}
+.road-step:last-child{margin-bottom:0}
+.road-step .dot{
+  position:absolute;left:-3rem;top:.3rem;width:30px;height:30px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#fff;z-index:2;
+}
+.road-step h3{font-size:1.1rem;font-weight:700;margin-bottom:.25rem}
+.road-step .years{font-family:var(--mono);font-size:.72rem;color:var(--accent2);margin-bottom:.5rem}
+.road-step p{color:var(--text2);font-size:.9rem}
+.road-step .detail-box{
+  background:rgba(26,34,54,.6);border:1px solid var(--border);border-radius:10px;
+  padding:1rem 1.2rem;margin-top:.8rem;font-size:.85rem;color:var(--text2);
+}
+.road-step .detail-box strong{color:var(--text)}
+.phase-divider{
+  margin:3rem 0 2rem;padding:.6rem 1.2rem;
+  background:rgba(244,63,94,.08);border-left:3px solid var(--accent);
+  border-radius:0 10px 10px 0;font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--accent);
+}
+
+/* === UNI TABLE === */
+.uni-table-wrap{overflow-x:auto;border-radius:16px;border:1px solid var(--border)}
+table.uni{width:100%;border-collapse:collapse;font-size:.82rem}
+table.uni thead{background:var(--bg3)}
+table.uni th{padding:.85rem .9rem;text-align:left;font-weight:600;color:var(--text2);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--border);white-space:nowrap}
+table.uni td{padding:.8rem .9rem;border-bottom:1px solid rgba(42,54,84,.5);vertical-align:top}
+table.uni tr:last-child td{border-bottom:none}
+table.uni tr:hover td{background:rgba(244,63,94,.04)}
+.badge{display:inline-block;padding:.15rem .5rem;border-radius:6px;font-size:.68rem;font-weight:600;white-space:nowrap}
+.badge-yes{background:rgba(52,211,153,.12);color:var(--accent4)}
+.badge-no{background:rgba(244,63,94,.12);color:var(--accent)}
+.badge-maybe{background:rgba(251,191,36,.12);color:var(--gold)}
+.badge-info{background:rgba(56,189,248,.12);color:var(--accent5)}
+
+/* === SCENARIO CARDS === */
+.scenario-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem}
+.scenario-card{position:relative;overflow:hidden}
+.scenario-card .plan-tag{font-family:var(--mono);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;margin-bottom:.8rem}
+.scenario-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.6rem}
+.scenario-card ul{list-style:none;padding:0}
+.scenario-card li{position:relative;padding-left:1.2rem;margin-bottom:.4rem;color:var(--text2);font-size:.85rem}
+.scenario-card li::before{content:'→';position:absolute;left:0;color:var(--accent);font-weight:700}
+.scenario-card .verdict{margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--border);font-size:.82rem;font-weight:600}
+
+/* === TIPS === */
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.tip-card{display:flex;gap:1rem;align-items:flex-start}
+.tip-num{min-width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:1rem;background:rgba(244,63,94,.1);color:var(--accent)}
+.tip-card h4{font-size:.92rem;font-weight:600;margin-bottom:.2rem}
+.tip-card p{font-size:.83rem;color:var(--text2)}
+
+/* === COST === */
+.cost-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem}
+.cost-card .uni-name{font-weight:700;font-size:1rem;margin-bottom:.5rem}
+.cost-card .price{font-family:var(--serif);font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cost-card .price-note{font-size:.75rem;color:var(--text2);margin-top:.2rem}
+
+/* === LINKS === */
+.links-section{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+.link-category{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem}
+.link-category h3{font-size:1rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.link-category ul{list-style:none;padding:0}
+.link-category li{margin-bottom:.7rem}
+.link-category li a{font-size:.88rem;display:flex;align-items:flex-start;gap:.5rem;line-height:1.4}
+.link-category li a .link-icon{min-width:18px;margin-top:2px;color:var(--accent5)}
+.link-category li .link-desc{font-size:.73rem;color:var(--text2);padding-left:1.4rem;margin-top:.15rem}
+
+/* === FOOTER === */
+.footer{text-align:center;padding:4rem 1.5rem 2rem;color:var(--text2);font-size:.8rem;border-top:1px solid var(--border)}
+.footer .brand{font-family:var(--serif);font-size:1.2rem;color:var(--text);margin-bottom:.5rem}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+@media(max-width:700px){
+  .hero-stats{flex-direction:column;gap:1rem}
+  section{padding:3rem 1rem}
+  .glossary-grid,.scenario-grid,.tips-grid,.cost-cards,.links-section{grid-template-columns:1fr}
+  .roadmap{padding-left:2.5rem}
+  .road-step .dot{left:-2.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-badge">🇲🇦 → 🇨🇦 Guide complet 2026</div>
+  <h1>Du Bac Marocain<br>au <span class="highlight">MD Canadien</span></h1>
+  <p class="subtitle">Le parcours complet de A à Z — depuis l'obtention du diplôme high school au Maroc à 18 ans jusqu'à devenir médecin au Canada. Tous les scénarios, toutes les universités, tous les liens.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-val red">17</div><div class="stat-label">Facultés de médecine</div></div>
+    <div class="stat"><div class="stat-val purple">8–12 ans</div><div class="stat-label">Durée totale du parcours</div></div>
+    <div class="stat"><div class="stat-val green">&lt;5%</div><div class="stat-label">Places internationaux</div></div>
+    <div class="stat"><div class="stat-val blue">18 → 30 ans</div><div class="stat-label">Âge typique bac → médecin</div></div>
+  </div>
+  <div class="scroll-cue">
+    <span>Explorer le guide</span>
+    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 14l-5-5h10l-5 5z"/></svg>
+  </div>
+</header>
+
+<!-- ============ NAV ============ -->
+<nav class="sticky-nav" id="nav">
+  <a href="#glossaire">Glossaire</a>
+  <a href="#parcours">Parcours complet</a>
+  <a href="#universites">Universités</a>
+  <a href="#scenarios">Scénarios</a>
+  <a href="#pilote">Programme Pilote</a>
+  <a href="#couts">Coûts</a>
+  <a href="#bachelors">Bachelors</a>
+  <a href="#conseils">Conseils</a>
+  <a href="#liens">Liens utiles</a>
+</nav>
+
+<!-- ============ GLOSSAIRE ============ -->
+<section id="glossaire">
+  <div class="section-label"><span class="dot"></span>Comprendre les bases</div>
+  <h2>Le <span class="hl">Glossaire</span> essentiel</h2>
+  <p class="intro">Tous les termes clés que tu rencontreras dans le système médical et universitaire canadien.</p>
+
+  <div class="glossary-grid">
+    <div class="card gloss-card">
+      <div class="icon icon-red">🎓</div>
+      <h3>MD / MDCM <span class="abbr">Doctor of Medicine</span></h3>
+      <p>Le diplôme de médecine canadien. Le programme professionnel de 4 ans auquel tu postules <strong>après</strong> un bachelor. À McGill = MDCM (Doctor of Medicine and Master of Surgery).</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-purple">📝</div>
+      <h3>MCAT <span class="abbr">Medical College Admission Test</span></h3>
+      <p>Examen standardisé nord-américain : lecture critique, raisonnement, sciences de base, analyse. Exigé par Toronto, McMaster (section CARS ≥ 123). McGill l'exige selon le parcours.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-green">🧠</div>
+      <h3>CASPer <span class="abbr">Situational Judgement Test</span></h3>
+      <p>Test en ligne de jugement situationnel : empathie, éthique, communication, collaboration, résilience. Exigé par McGill et McMaster. Ce n'est PAS un examen de sciences.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-blue">📊</div>
+      <h3>GPA <span class="abbr">Grade Point Average</span></h3>
+      <p>Moyenne cumulative universitaire sur 4.0. Pour médecine : vise ≥ 3.8/4.0. C'est souvent LE critère le plus déterminant au Canada.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-gold">🌍</div>
+      <h3>WES <span class="abbr">World Education Services</span></h3>
+      <p>Organisme qui évalue les diplômes étrangers pour en calculer l'équivalence canadienne (cours par cours + GPA). Exigé par U of T pour les candidats formés hors Canada.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-orange">🪪</div>
+      <h3>PR <span class="abbr">Résidence Permanente</span></h3>
+      <p>Statut d'immigration qui te rend admissible à presque TOUTES les facultés de médecine canadiennes. C'est la clé qui ouvre 90% des portes fermées aux internationaux.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-red">📋</div>
+      <h3>AFMC <span class="abbr">Assoc. Facultés de Médecine du Canada</span></h3>
+      <p>L'organisme national qui publie le guide annuel des admissions en médecine — LA source officielle pour les critères et politiques de chaque faculté canadienne.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-purple">🔄</div>
+      <h3>CaRMS <span class="abbr">Canadian Resident Matching Service</span></h3>
+      <p>Système de jumelage pour la résidence médicale (spécialisation) après le MD. Tu choisis ta spécialité : chirurgie, pédiatrie, médecine familiale, etc.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-green">🏫</div>
+      <h3>PPECFSM <span class="abbr">Programme Pilote Francophone</span></h3>
+      <p>Programme d'IRCC pour étudiants francophones hors Québec. Voie accélérée du permis d'études vers la résidence permanente. Maroc = pays admissible.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-blue">📄</div>
+      <h3>OUAC <span class="abbr">Ontario Universities' Application Centre</span></h3>
+      <p>Le portail centralisé pour postuler aux universités de l'Ontario. C'est par OUAC que tu fais ta demande d'admission à uOttawa, Toronto, McMaster, etc.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-gold">🗣️</div>
+      <h3>TEF / TCF <span class="abbr">Tests de Français</span></h3>
+      <p>Tests de compétence linguistique en français reconnus par IRCC. Niveau B2 minimum requis pour le PPECFSM. Aussi exigé par certaines universités francophones.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-orange">🏥</div>
+      <h3>IMG <span class="abbr">International Medical Graduate</span></h3>
+      <p>Diplômé en médecine d'une faculté hors Canada/USA. Voie alternative : faire le MD ailleurs, puis tenter de pratiquer au Canada via les programmes IMG.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARCOURS COMPLET ============ -->
+<section id="parcours">
+  <div class="section-label"><span class="dot"></span>Le chemin complet de A à Z</div>
+  <h2>Du Bac Marocain au <span class="hl">MD Canadien</span></h2>
+  <p class="intro">Voici la feuille de route complète et réaliste, depuis tes 18 ans au Maroc jusqu'à ta pratique médicale au Canada. Chaque étape est détaillée.</p>
+
+  <div class="roadmap">
+
+    <!-- PHASE 1 : AU MAROC -->
+    <div class="phase-divider">🇲🇦 Phase 1 — Au Maroc (avant de partir)</div>
+
+    <div class="road-step">
+      <div class="dot" style="background:var(--gold)">0</div>
+      <h3>🎓 Obtenir le Baccalauréat marocain</h3>
+      <div class="years">Âge 18 ans — Année 0</div>
+      <p>Obtenir ton bac marocain avec les meilleures notes possibles, idéalement en filière scientifique (SVT ou Sciences Mathématiques). Les universités canadiennes évaluent tes résultats de Terminale.</p>
+      <div class="detail-box">
+        <strong>Prérequis typiques pour le bachelor au Canada :</strong><br>
+        • Bac marocain complété avec moyenne élevée (vise 14+/20 minimum)<br>
+        • Cours de maths et sciences requis selon le programme visé<br>
+        • uOttawa : moyenne combinée de 70% minimum en sciences/maths préalables<br>
+        • Le bac marocain est reconnu par les universités canadiennes comme équivalent du diplôme secondaire
+      </div>
+    </div>
+
+    <div class="road-step">
+      <div class="dot" style="background:var(--gold)">1</div>
+      <h3>🗣️ Passer les tests de langue (TEF/TCF + IELTS)</h3>
+      <div class="years">Âge 18 ans — Mois 1-3 après le bac</div>
+      <p>Prépare et passe les tests de compétence linguistique requis. Pour le PPECFSM : TEF ou TCF Canada (niveau B2 minimum). Pour les programmes anglophones : IELTS ou équivalent.</p>
+      <div class="detail-box">
+        <strong>Tests acceptés :</strong><br>
+        • <strong>Français :</strong> TEF Canada ou TCF Canada (B2+ pour PPECFSM, C1 pour certains programmes McGill)<br>
+        • <strong>Anglais :</strong> IELTS Academic, TOEFL iBT, Duolingo English Test, PTE Academic, CAEL<br>
+        • uOttawa accepte des exemptions si études secondaires en français/anglais<br>
+        • Coût estimé : ~300-500 $ CA par test
+      </div>
+    </div>
+
+    <div class="road-step">
+      <div class="dot" style="background:var(--gold)">2</div>
+      <h3>📋 Postuler aux universités canadiennes</h3>
+      <div class="years">Âge 18 ans — Sept-Janv (pour entrée automne suivant)</div>
+      <p>Prépare et soumets ta candidature via le portail approprié (OUAC pour l'Ontario, portail direct pour Québec/autres provinces). Choisis un programme stratégique pour la médecine.</p>
+      <div class="detail-box">
+        <strong>Calendrier d'admission typique (pour uOttawa automne 2026) :</strong><br>
+        • 18 sept 2025 : ouverture des candidatures OUAC<br>
+        • 15 janv 2026 : date recommandée pour postuler<br>
+        • 1er avril 2026 : date limite principale<br>
+        • 1er juin 2026 : accepter l'offre + dépôt d'admission<br>
+        • <strong>Frais de candidature :</strong> ~50-120 $ CA selon l'université
+      </div>
+    </div>
+
+    <div class="road-step">
+      <div class="dot" style="background:var(--gold)">3</div>
+      <h3>✈️ Demander le permis d'études (+ PPECFSM si éligible)</h3>
+      <div class="years">Âge 18 ans — Fév-Juin</div>
+      <p>Une fois admis, demande ton permis d'études à IRCC. Si éligible au PPECFSM : utilise cette voie pour un traitement accéléré et aucune LAP nécessaire.</p>
+      <div class="detail-box">
+        <strong>Deux voies possibles :</strong><br>
+        • <strong>Voie PPECFSM :</strong> Pas de LAP requise. Dépôt requis (~10 000-25 000 $ selon l'établissement). Voie accélérée vers la PR après le diplôme.<br>
+        • <strong>Voie classique :</strong> LAP requise. Preuve de fonds (~20 000 $ + frais de scolarité). Délai de traitement variable (~8-16 semaines).<br>
+        • Le Maroc est un pays admissible au PPECFSM (membre de l'OIF)
+      </div>
+    </div>
+
+    <!-- PHASE 2 : AU CANADA - BACHELOR -->
+    <div class="phase-divider">🇨🇦 Phase 2 — Au Canada : Le Bachelor (1er cycle)</div>
+
+    <div class="road-step">
+      <div class="dot" style="background:var(--accent)">4</div>
+      <h3>📚 Année 1 du Bachelor — Fondations</h3>
+      <div class="years">Âge 18-19 ans — Année 1</div>
+      <p>Commence ton bachelor dans un programme stratégique. Priorité absolue : un GPA exceptionnel dès le départ. S'intégrer dans la communauté universitaire.</p>
+      <div class="detail-box">
+        <strong>Objectifs année 1 :</strong><br>
+        • Vise un GPA ≥ 3.8/4.0 dès le départ (c'est le moment le plus crucial)<br>
+        • Commence le bénévolat (hôpital, clinique, communautaire) — la constance compte plus que la quantité<br>
+        • Explore les clubs scientifiques et médicaux sur le campus<br>
+        • Commence à te familiariser avec le système de santé canadien<br>
+        • Utilise les services de tutorat et de soutien académique
+      </div>
+    </div>
+
+    <div class="road-step">
+      <div class="dot" style="background:var(--accent)">5</div>
+      <h3>🔬 Années 2-3 — Construction du dossier</h3>
+      <div class="years">Âge 19-21 ans — Années 2-3</div>
+      <p>Accélère la construction de ton profil : recherche, leadership, expériences cliniques. Maintiens un GPA élevé. Commence à préparer la demande de PR si applicable.</p>
+      <div class="detail-box">
+        <strong>Objectifs années 2-3 :</strong><br>
+        • GPA toujours ≥ 3.8 (idéalement en hausse chaque année)<br>
+        • Rejoins un labo de recherche (même un petit projet avec un professeur compte)<br>
+        • Prends des rôles de leadership (président de club, organisation d'événements)<br>
+        • Accumule des heures de bénévolat clinique et communautaire<br>
+        • <strong>Immigration :</strong> si PPECFSM, prépare la transition vers la PR<br>
+        • Si la PR n'est pas encore obtenue, explore Express Entry / PNP
+      </div>
+    </div>
+
+    <div class="road-step">
+      <div class="dot" style="background:var(--accent)">6</div>
+      <h3>🎯 Année 4 — Préparation aux candidatures MD</h3>
+      <div class="years">Âge 21-22 ans — Année 4</div>
+      <p>Dernière année du bachelor. Prépare le MCAT, passe le CASPer, finalise la demande de PR si ce n'est pas fait. Commence à rédiger tes essais d'admission au MD.</p>
+      <div class="detail-box">
+        <strong>Checklist année 4 :</strong><br>
+        • <strong>MCAT :</strong> ~3-6 mois de préparation, coût ~400 $ CA. Passe-le idéalement en été avant ta dernière année.<br>
+        • <strong>CASPer :</strong> test en ligne (~80 $), pratique les scénarios éthiques/situationnels<br>
+        • <strong>PR :</strong> idéalement obtenue AVANT de postuler au MD (ouvre 90% des portes)<br>
+        • Demande tes lettres de recommandation (3 mois à l'avance minimum)<br>
+        • Rédige tes essais personnels / Autobiographical Sketch (U of T)<br>
+        • <strong>Dates limites MD :</strong> généralement sept-nov pour l'année suivante
+      </div>
+    </div>
+
+    <!-- PHASE 3 : CANDIDATURE MD -->
+    <div class="phase-divider">🩺 Phase 3 — Candidature et études de médecine</div>
+
+    <div class="road-step">
+      <div class="dot" style="background:var(--accent3)">7</div>
+      <h3>📝 Postuler au programme MD</h3>
+      <div class="years">Âge 22 ans — Automne de l'année 4 ou année gap</div>
+      <p>Soumets tes candidatures aux facultés de médecine. Avec la PR, tu peux postuler à presque toutes les écoles. Sans PR, McGill reste l'option principale.</p>
+      <div class="detail-box">
+        <strong>Processus de candidature :</strong><br>
+        • <strong>McGill MDCM :</strong> date limite 1er novembre via portail McGill. Entrevues MMI en février.<br>
+        • <strong>Ontario (uOttawa, Queen's, Western, etc.) :</strong> via OMSAS (portail centralisé Ontario). PR requise.<br>
+        • <strong>Autres provinces :</strong> portails propres à chaque université. PR requise dans la majorité.<br>
+        • Réponses généralement en avril-mai<br>
+        • <strong>Plan B si refusé :</strong> améliorer ton dossier, re-postuler l'année suivante, ou considérer d'autres professions de santé
+      </div>
+    </div>
+
+    <div class="road-step">
+      <div class="dot" style="background:var(--accent3)">8</div>
+      <h3>🏥 Études de médecine (MD / MDCM)</h3>
+      <div class="years">Âge 22-26 ans — 4 ans</div>
+      <p>4 années intensives : 2 ans de sciences fondamentales et 2 ans de stages cliniques (clerkships). Tu apprends à diagnostiquer, traiter et prendre en charge des patients.</p>
+      <div class="detail-box">
+        <strong>Structure typique du MD :</strong><br>
+        • <strong>Années 1-2 :</strong> sciences fondamentales, anatomie, physiologie, pharmacologie, introduction clinique<br>
+        • <strong>Années 3-4 :</strong> stages cliniques rotatifs (chirurgie, médecine interne, pédiatrie, obstétrique, psychiatrie, médecine familiale, urgence…)<br>
+        • À McGill : le curriculum inclut le « Fundamentals of Medicine and Dentistry » puis le « Transition to Clinical Practice »<br>
+        • Tu choisis ta spécialité et postules via CaRMS en année 4
+      </div>
+    </div>
+
+    <!-- PHASE 4 : RÉSIDENCE -->
+    <div class="phase-divider">👨‍⚕️ Phase 4 — Résidence et pratique</div>
+
+    <div class="road-step">
+      <div class="dot" style="background:var(--accent4)">9</div>
+      <h3>🔄 Résidence médicale (spécialisation via CaRMS)</h3>
+      <div class="years">Âge 26-31 ans — 2 à 7 ans selon la spécialité</div>
+      <p>Après le MD, tu te spécialises via le système CaRMS. La durée varie : 2 ans pour la médecine familiale, 5+ ans pour la chirurgie ou les sur-spécialités.</p>
+      <div class="detail-box">
+        <strong>Durée par spécialité (exemples) :</strong><br>
+        • Médecine familiale : 2 ans<br>
+        • Pédiatrie : 4 ans<br>
+        • Médecine interne : 4 ans<br>
+        • Chirurgie générale : 5 ans<br>
+        • Neurochirurgie : 6-7 ans<br>
+        • <strong>Salaire en résidence :</strong> ~60 000-85 000 $ CA / an
+      </div>
+    </div>
+
+    <div class="road-step">
+      <div class="dot" style="background:var(--accent5)">10</div>
+      <h3>✅ Médecin en pratique au Canada</h3>
+      <div class="years">Âge 28-33 ans</div>
+      <p>Tu obtiens ton permis de pratique du Collège des médecins provincial. Tu es officiellement médecin au Canada. Tu peux pratiquer en clinique, à l'hôpital, en recherche, en enseignement…</p>
+      <div class="detail-box">
+        <strong>Résumé de la durée totale :</strong><br>
+        • Bac marocain → arrivée au Canada : ~1 an<br>
+        • Bachelor au Canada : 4 ans<br>
+        • MD : 4 ans<br>
+        • Résidence : 2-7 ans<br>
+        • <strong>Total : 11-16 ans depuis le bac marocain</strong><br>
+        • <strong>Salaire médecin débutant :</strong> ~250 000 - 400 000+ $ CA / an selon spécialité et province
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ UNIVERSITÉS ============ -->
+<section id="universites">
+  <div class="section-label"><span class="dot"></span>Comparatif détaillé</div>
+  <h2>Les <span class="hl">Universités</span> — Faculté par faculté</h2>
+  <p class="intro">Vue d'ensemble complète des principales facultés de médecine canadiennes, leur accessibilité et les critères pour les étudiants internationaux.</p>
+
+  <div class="uni-table-wrap">
+    <table class="uni">
+      <thead>
+        <tr>
+          <th>Université</th>
+          <th>Prov.</th>
+          <th>Internat.</th>
+          <th>MCAT</th>
+          <th>CASPer</th>
+          <th>GPA min</th>
+          <th>Langue</th>
+          <th>Frais MD internat. / an</th>
+          <th>Note clé</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>McGill</strong><br><span style="font-size:.7rem;color:var(--text2)">MDCM</span></td>
+          <td>QC</td>
+          <td><span class="badge badge-yes">Oui*</span></td>
+          <td><span class="badge badge-maybe">Selon parcours</span></td>
+          <td><span class="badge badge-yes">Oui</span></td>
+          <td>3.5+</td>
+          <td>FR + EN</td>
+          <td>~67 700 $</td>
+          <td>~1 place visa/an. Meilleure option directe internationale. Campus Outaouais en français.</td>
+        </tr>
+        <tr>
+          <td><strong>U of Toronto</strong></td>
+          <td>ON</td>
+          <td><span class="badge badge-no">Non (2026)</span></td>
+          <td><span class="badge badge-yes">Oui</span></td>
+          <td>—</td>
+          <td>3.6+ (3.8 compétitif)</td>
+          <td>EN</td>
+          <td>~100 700 $</td>
+          <td>AFMC 2026 : pas d'admissions internationales. WES requis si études hors Canada.</td>
+        </tr>
+        <tr>
+          <td><strong>McMaster</strong></td>
+          <td>ON</td>
+          <td><span class="badge badge-maybe">Incertain</span></td>
+          <td><span class="badge badge-info">CARS ≥123</span></td>
+          <td><span class="badge badge-yes">Oui</span></td>
+          <td>—</td>
+          <td>EN</td>
+          <td>~95 000 $</td>
+          <td>Admission non-Canadiens possiblement supprimée dès 2026.</td>
+        </tr>
+        <tr>
+          <td><strong>uOttawa</strong></td>
+          <td>ON</td>
+          <td><span class="badge badge-no">Non</span></td>
+          <td>—</td>
+          <td><span class="badge badge-yes">Oui</span></td>
+          <td>Très élevé</td>
+          <td>FR / EN</td>
+          <td>N/A (PR requise)</td>
+          <td>Bilingue. Exige citoyenneté / PR / réfugié. Excellente ville pour le bachelor.</td>
+        </tr>
+        <tr>
+          <td><strong>Queen's</strong></td>
+          <td>ON</td>
+          <td><span class="badge badge-no">Non</span></td>
+          <td><span class="badge badge-yes">Oui</span></td>
+          <td><span class="badge badge-yes">Oui</span></td>
+          <td>Élevé</td>
+          <td>EN</td>
+          <td>N/A (PR requise)</td>
+          <td>Citoyenneté / PR requise.</td>
+        </tr>
+        <tr>
+          <td><strong>Western</strong></td>
+          <td>ON</td>
+          <td><span class="badge badge-no">Non</span></td>
+          <td><span class="badge badge-yes">Oui</span></td>
+          <td>—</td>
+          <td>3.7+</td>
+          <td>EN</td>
+          <td>N/A</td>
+          <td>N'accepte pas les internationaux au MD.</td>
+        </tr>
+        <tr>
+          <td><strong>UBC</strong></td>
+          <td>CB</td>
+          <td><span class="badge badge-no">Non</span></td>
+          <td><span class="badge badge-yes">Oui</span></td>
+          <td>—</td>
+          <td>Élevé</td>
+          <td>EN</td>
+          <td>N/A</td>
+          <td>Internationaux non admissibles au MD.</td>
+        </tr>
+        <tr>
+          <td><strong>UAlberta</strong></td>
+          <td>AB</td>
+          <td><span class="badge badge-no">Non</span></td>
+          <td><span class="badge badge-yes">Oui</span></td>
+          <td>—</td>
+          <td>Élevé</td>
+          <td>EN</td>
+          <td>N/A</td>
+          <td>Internationaux non admissibles.</td>
+        </tr>
+        <tr>
+          <td><strong>USask</strong></td>
+          <td>SK</td>
+          <td><span class="badge badge-no">Non</span></td>
+          <td><span class="badge badge-yes">Oui</span></td>
+          <td>—</td>
+          <td>Élevé</td>
+          <td>EN</td>
+          <td>N/A</td>
+          <td>PR + 3 ans de résidence au Canada requis avant l'admission.</td>
+        </tr>
+        <tr>
+          <td><strong>U Manitoba</strong></td>
+          <td>MB</td>
+          <td><span class="badge badge-no">Non</span></td>
+          <td><span class="badge badge-yes">Oui</span></td>
+          <td>—</td>
+          <td>Élevé</td>
+          <td>EN</td>
+          <td>N/A</td>
+          <td>Citoyenneté / PR obligatoire. Intérêt pour le bilinguisme/francophonie.</td>
+        </tr>
+        <tr>
+          <td><strong>Dalhousie</strong></td>
+          <td>NÉ</td>
+          <td><span class="badge badge-no">Non</span></td>
+          <td><span class="badge badge-yes">Oui</span></td>
+          <td>—</td>
+          <td>Élevé</td>
+          <td>EN</td>
+          <td>N/A</td>
+          <td>Internationaux non admissibles au MD. Maritimes.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:1.5rem;border-left:3px solid var(--accent5)">
+    <p style="font-size:.88rem;color:var(--text2)">
+      <strong style="color:var(--accent5)">📌 Constat clair :</strong> Sans PR, tes options MD se résument essentiellement à McGill (1 place/an). Avec la PR, tu ouvres la porte à presque tout le pays. C'est pourquoi le parcours « Bachelor → PR → MD domestique » est la stratégie la plus solide.
+    </p>
+  </div>
+</section>
+
+<!-- ============ SCÉNARIOS ============ -->
+<section id="scenarios">
+  <div class="section-label"><span class="dot"></span>Stratégies concrètes</div>
+  <h2>Les 4 <span class="hl">Scénarios</span> possibles</h2>
+  <p class="intro">Chaque scénario a ses avantages et ses risques. Analyse honnête de chaque voie depuis le bac marocain.</p>
+
+  <div class="scenario-grid">
+    <div class="card scenario-card">
+      <div class="plan-tag" style="color:var(--accent4)">★ Plan A — Le plus stratégique</div>
+      <h3>Bachelor + PPECFSM → PR → MD domestique</h3>
+      <ul>
+        <li>Utiliser le PPECFSM pour venir au Canada plus facilement</li>
+        <li>Bachelor de 4 ans avec GPA exceptionnel (Ottawa, etc.)</li>
+        <li>PR accélérée via le programme pilote après le diplôme</li>
+        <li>Postuler comme candidat domestique à toutes les facultés</li>
+        <li>Durée totale : ~11-16 ans depuis le bac</li>
+      </ul>
+      <div class="verdict" style="color:var(--accent4)">✓ Le plus réaliste et le plus solide à long terme</div>
+    </div>
+
+    <div class="card scenario-card">
+      <div class="plan-tag" style="color:var(--accent2)">Plan B — Ambitieux mais étroit</div>
+      <h3>Bachelor → candidature directe internationale (McGill)</h3>
+      <ul>
+        <li>Faire un bachelor au Canada ou ailleurs</li>
+        <li>Postuler directement à McGill MDCM comme international</li>
+        <li>GPA 3.5+, CASPer, dossier exceptionnel</li>
+        <li>~1 seule place visa par an</li>
+        <li>Pas besoin de PR, mais compétition extrême</li>
+      </ul>
+      <div class="verdict" style="color:var(--accent2)">⚡ Possible mais 1 place/an = quasi-loterie</div>
+    </div>
+
+    <div class="card scenario-card">
+      <div class="plan-tag" style="color:var(--accent5)">Plan C — Sans programme pilote</div>
+      <h3>Bachelor classique → PGWP → PR → MD</h3>
+      <ul>
+        <li>Permis d'études classique (avec LAP)</li>
+        <li>Bachelor + permis de travail post-diplôme (PGWP)</li>
+        <li>PR via Express Entry après 1-2 ans de travail</li>
+        <li>Même logique que Plan A, sans l'avantage PPECFSM</li>
+        <li>PR plus longue à obtenir (~1-2 ans de plus)</li>
+      </ul>
+      <div class="verdict" style="color:var(--accent5)">◎ Fonctionnel mais chemin plus long vers la PR</div>
+    </div>
+
+    <div class="card scenario-card">
+      <div class="plan-tag" style="color:var(--accent3)">Plan D — Alternatif</div>
+      <h3>MD au Maroc/France → Voie IMG au Canada</h3>
+      <ul>
+        <li>Faire médecine au Maroc (6 ans) ou France (6-9 ans)</li>
+        <li>Revenir au Canada via les voies IMG</li>
+        <li>McGill : voie IMG-2 (2 ans) et IMG-4 (4 ans)</li>
+        <li>Exige souvent la résidence au Québec + CMQ</li>
+        <li>Parcours plus incertain et compétitif</li>
+      </ul>
+      <div class="verdict" style="color:var(--accent3)">⚠ Plus incertain pour pratiquer au Canada à long terme</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRAMME PILOTE ============ -->
+<section id="pilote">
+  <div class="section-label"><span class="dot"></span>Immigration stratégique</div>
+  <h2>Le Programme <span class="hl">Pilote</span> Francophone (PPECFSM)</h2>
+  <p class="intro">Ta meilleure arme d'immigration comme étudiant francophone marocain hors Québec.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem">
+    <div class="card">
+      <h3 style="color:var(--accent4);margin-bottom:.8rem">✅ Ce qu'il offre</h3>
+      <p style="color:var(--text2);font-size:.9rem">
+        <strong>Voie accélérée permis d'études → PR.</strong> Pas de LAP requise. Accès à des services d'intégration. Le Maroc est un pays admissible (membre de l'OIF). Idéal pour Ontario, Manitoba, Nouveau-Brunswick, Nouvelle-Écosse, etc. Tu peux demander la PR directement après le diplôme, sans passer par le PGWP.
+      </p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--accent);margin-bottom:.8rem">❌ Ce qu'il ne fait PAS</h3>
+      <p style="color:var(--text2);font-size:.9rem">
+        <strong>Il ne donne PAS un accès direct à la médecine.</strong> C'est un outil d'immigration, pas un programme d'admission en MD. La médecine reste contingentée. Tu l'utilises pour faire un bachelor stratégique + obtenir la PR, puis tu postules au MD comme candidat domestique.
+      </p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--accent5);margin-bottom:.8rem">📋 Conditions d'éligibilité</h3>
+      <p style="color:var(--text2);font-size:.9rem">
+        <strong>Citoyenneté :</strong> pays membre de l'OIF en Afrique, Moyen-Orient, Amériques (Maroc ✅).<br>
+        <strong>Langue :</strong> TEF/TCF Canada niveau B2 minimum.<br>
+        <strong>Programme :</strong> ≥ 2 ans, temps plein, menant à un diplôme, >50% en français.<br>
+        <strong>Établissement :</strong> EED participant hors Québec.<br>
+        <strong>Finances :</strong> dépôt + preuve de fonds de subsistance.
+      </p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--gold);margin-bottom:.8rem">💰 Dépôts requis (exemples 2025-26)</h3>
+      <p style="color:var(--text2);font-size:.9rem">
+        <strong>uOttawa :</strong> paiement des frais de scolarité d'un trimestre + dépôt d'admission.<br>
+        <strong>Université Sainte-Anne :</strong> 20 000 $ (scolarité + résidence + cafétéria).<br>
+        <strong>U de Moncton :</strong> 25 000 $.<br>
+        <strong>Collège La Cité :</strong> ~16 000 $ (frais de scolarité d'une année).<br>
+        Les dépôts sont remboursables si le permis d'études est refusé.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COÛTS ============ -->
+<section id="couts">
+  <div class="section-label"><span class="dot"></span>Budget estimé</div>
+  <h2>Les <span class="hl">Coûts</span> du parcours complet</h2>
+  <p class="intro">Estimations basées sur les données 2025-26. Les frais sont en dollars canadiens et susceptibles de changer.</p>
+
+  <h3 style="margin-bottom:1rem;font-size:1.1rem;color:var(--accent2)">💰 Frais du Bachelor (1er cycle) — par année</h3>
+  <div class="cost-cards" style="margin-bottom:2.5rem">
+    <div class="card cost-card">
+      <div class="uni-name">uOttawa</div>
+      <div class="price">~30 000 – 45 000 $</div>
+      <div class="price-note">CAD / an — Varie selon le programme. Sciences et santé dans la fourchette haute.</div>
+    </div>
+    <div class="card cost-card">
+      <div class="uni-name">McGill (bachelor)</div>
+      <div class="price">~25 000 – 55 000 $</div>
+      <div class="price-note">CAD / an — Varie selon la faculté. Sciences dans la fourchette moyenne.</div>
+    </div>
+    <div class="card cost-card">
+      <div class="uni-name">U of Toronto</div>
+      <div class="price">~45 000 – 65 000 $</div>
+      <div class="price-note">CAD / an — L'une des plus chères. Life Sciences dans la fourchette haute.</div>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom:1rem;font-size:1.1rem;color:var(--accent)">🩺 Frais du MD (médecine) — par année, international</h3>
+  <div class="cost-cards">
+    <div class="card cost-card">
+      <div class="uni-name">McGill (MDCM)</div>
+      <div class="price">~67 700 $</div>
+      <div class="price-note">CAD / an — Année 1, incluant assurance santé internationale. Programme ~200 crédits sur 4 ans.</div>
+    </div>
+    <div class="card cost-card">
+      <div class="uni-name">U of Toronto (MD)</div>
+      <div class="price">~100 700 $</div>
+      <div class="price-note">CAD / an — Année 1, incluant tuition, frais annexes et UHIP. Fermé aux internat. en 2026.</div>
+    </div>
+    <div class="card cost-card">
+      <div class="uni-name">McMaster (MD)</div>
+      <div class="price">~95 000 $</div>
+      <div class="price-note">CAD / an — Tuition seule, avant autres frais. Incertain pour 2026.</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.5rem;border-left:3px solid var(--gold)">
+    <p style="font-size:.88rem;color:var(--text2)">
+      <strong style="color:var(--gold)">💡 Budget total estimé sur le parcours complet :</strong><br>
+      • Bachelor (4 ans) : 120 000 – 220 000 $ CA<br>
+      • MD (4 ans) : 270 000 – 400 000 $ CA (comme international) ou ~25 000 – 30 000 $/an comme domestique/PR<br>
+      • Coût de vie : ~15 000 – 22 000 $ CA / an (logement, nourriture, transport, assurance)<br>
+      • <strong>Total brut estimé (8 ans) : 400 000 – 700 000 $ CA comme international</strong><br>
+      • <strong>Avec la PR au moment du MD, le coût baisse drastiquement</strong> (frais domestiques ~4x moins chers)
+    </p>
+  </div>
+</section>
+
+<!-- ============ BACHELORS ============ -->
+<section id="bachelors">
+  <div class="section-label"><span class="dot"></span>Programmes pré-médicaux</div>
+  <h2>Les <span class="hl">Bachelors</span> stratégiques</h2>
+  <p class="intro">Il n'existe pas de « pré-med » officiel au Canada. U of T le dit explicitement. Le meilleur programme est celui où tu obtiens le meilleur GPA tout en remplissant les prérequis.</p>
+
+  <div class="glossary-grid">
+    <div class="card gloss-card">
+      <div class="icon icon-red">🔬</div>
+      <h3>Biomedical Sciences</h3>
+      <p>Le choix classique. Couvre tous les prérequis MD, excellente base pour le MCAT, accès direct à la recherche en labo. Offert à uOttawa, McGill, Western, Calgary, etc.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-green">💊</div>
+      <h3>Health Sciences</h3>
+      <p>Très populaire (McMaster, uOttawa). Focus sur le système de santé, la bioéthique, l'épidémiologie. Bon pour les essais d'admission. Très pertinent pour le CASPer.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-blue">🧬</div>
+      <h3>Life Sciences / Biology</h3>
+      <p>Large et flexible. Couvre biologie cellulaire, génétique, physiologie. Programmes très répandus dans toutes les universités. Bon si tu veux garder tes options ouvertes.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-purple">⚗️</div>
+      <h3>Biochemistry</h3>
+      <p>Plus technique et rigoureux. Excellent pour la recherche et le MCAT. Demande de la rigueur en chimie organique et biologie moléculaire.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-gold">🧠</div>
+      <h3>Neuroscience</h3>
+      <p>Spécialisé et passionnant. Bon si tu vises la neurologie ou la psychiatrie. Aide aussi pour la section psycho/socio du MCAT.</p>
+    </div>
+    <div class="card gloss-card">
+      <div class="icon icon-orange">🏃</div>
+      <h3>Kinesiology</h3>
+      <p>Option moins conventionnelle mais valide. Orienté mouvement et physiologie humaine. Peut mener à médecine sportive ou réadaptation.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.5rem;border-left:3px solid var(--accent3)">
+    <p style="font-size:.88rem;color:var(--text2)">
+      <strong style="color:var(--accent3)">🎯 L'essentiel :</strong> Même un programme non scientifique peut mener au MD si les prérequis sont remplis. McGill encourage explicitement les étudiants de tous horizons à considérer la médecine. Ce qui compte : GPA exceptionnel (≥ 3.8) + prérequis remplis + dossier humain complet (bénévolat, recherche, leadership).
+    </p>
+  </div>
+</section>
+
+<!-- ============ CONSEILS ============ -->
+<section id="conseils">
+  <div class="section-label"><span class="dot"></span>Recommandations</div>
+  <h2>12 Conseils <span class="hl">Stratégiques</span></h2>
+  <p class="intro">Les leçons les plus importantes pour maximiser tes chances depuis le Maroc jusqu'au MD canadien.</p>
+
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-num">1</div>
+      <div><h4>GPA d'abord, tout le reste ensuite</h4>
+      <p>Un 3.9 avec peu d'activités bat un 3.3 avec 20 activités. Le GPA est le premier filtre à chaque faculté.</p></div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">2</div>
+      <div><h4>Vise la PR le plus tôt possible</h4>
+      <p>La résidence permanente ouvre 90% des portes. C'est ton investissement le plus important après le GPA.</p></div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">3</div>
+      <div><h4>Utilise le PPECFSM si éligible</h4>
+      <p>Comme Marocain francophone, c'est ta meilleure arme immigration. PR accélérée sans passer par le PGWP.</p></div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">4</div>
+      <div><h4>Prépare le CASPer sérieusement</h4>
+      <p>Ce n'est pas un test de sciences. Il évalue ton jugement, ton empathie, ta réactivité. Pratique les scénarios.</p></div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">5</div>
+      <div><h4>Ton profil francophone est un atout</h4>
+      <p>McGill Campus Outaouais, uOttawa, Manitoba — le bilinguisme est valorisé. Exploite-le dans tes candidatures.</p></div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">6</div>
+      <div><h4>Commence le bénévolat dès l'année 1</h4>
+      <p>Les facultés veulent de la constance sur 3-4 ans, pas une explosion d'activités en dernière année.</p></div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">7</div>
+      <div><h4>Choisis le programme où tu excelles</h4>
+      <p>Ne choisis pas Biochimie parce que ça « fait bien ». Choisis le programme où tu peux avoir le meilleur GPA.</p></div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">8</div>
+      <div><h4>Vérifie les critères CHAQUE année</h4>
+      <p>Les politiques changent (Toronto 2026). Consulte le guide AFMC annuellement et les sites des facultés.</p></div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">9</div>
+      <div><h4>Fais de la recherche universitaire</h4>
+      <p>Même un petit projet avec un professeur. Ça montre rigueur et curiosité — deux qualités que les comités cherchent.</p></div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">10</div>
+      <div><h4>Prépare le MCAT en 3-6 mois</h4>
+      <p>C'est un marathon, pas un sprint. Commence la préparation en 3e année. Utilise des ressources comme UWorld, AAMC, Khan Academy.</p></div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">11</div>
+      <div><h4>Aie un Plan B solide</h4>
+      <p>Pharmacie, dentisterie, sciences infirmières, santé publique, optométrie — des alternatives valorisantes dans le domaine de la santé.</p></div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">12</div>
+      <div><h4>Patience et persévérance</h4>
+      <p>Le parcours dure 11-16 ans. C'est un marathon. Beaucoup de médecins canadiens ont postulé 2-3 fois avant d'être acceptés.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIENS UTILES ============ -->
+<section id="liens">
+  <div class="section-label"><span class="dot"></span>Ressources officielles</div>
+  <h2>Tous les <span class="hl">Liens</span> utiles</h2>
+  <p class="intro">Les liens directs vers les sources officielles, organisés par catégorie. Vérifie toujours les informations les plus récentes sur ces sites.</p>
+
+  <div class="links-section">
+
+    <!-- IRCC & Immigration -->
+    <div class="link-category">
+      <h3>🇨🇦 Immigration (IRCC)</h3>
+      <ul>
+        <li>
+          <a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/etudier-canada/permis-etudes/programme-pilote-etudiants-cfsm.html" target="_blank"><span class="link-icon">→</span> PPECFSM — Page principale du programme pilote</a>
+          <div class="link-desc">Présentation complète du programme par IRCC</div>
+        </li>
+        <li>
+          <a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/etudier-canada/permis-etudes/programme-pilote-etudiants-cfsm/admissibilite.html" target="_blank"><span class="link-icon">→</span> PPECFSM — Critères d'admissibilité</a>
+          <div class="link-desc">Pays éligibles, conditions, exigences financières</div>
+        </li>
+        <li>
+          <a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/etudier-canada/permis-etudes.html" target="_blank"><span class="link-icon">→</span> Permis d'études — Guide général IRCC</a>
+          <div class="link-desc">Comment demander un permis d'études classique</div>
+        </li>
+        <li>
+          <a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/immigrer-canada/entree-express.html" target="_blank"><span class="link-icon">→</span> Entrée Express — Résidence permanente</a>
+          <div class="link-desc">Voie principale vers la PR pour les travailleurs qualifiés</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- McGill -->
+    <div class="link-category">
+      <h3>🔴 McGill — Médecine</h3>
+      <ul>
+        <li>
+          <a href="https://www.mcgill.ca/medadmissions/" target="_blank"><span class="link-icon">→</span> Page d'accueil admissions médecine</a>
+          <div class="link-desc">Portail principal des admissions MDCM</div>
+        </li>
+        <li>
+          <a href="https://www.mcgill.ca/medadmissions/applying/categories/int" target="_blank"><span class="link-icon">→</span> Catégorie internationale — MDCM</a>
+          <div class="link-desc">Conditions pour les candidats internationaux (1 place visa/an)</div>
+        </li>
+        <li>
+          <a href="https://www.mcgill.ca/medadmissions/programs/mdcm" target="_blank"><span class="link-icon">→</span> Programme MDCM — Description</a>
+          <div class="link-desc">Détails du programme, campus Montréal et Outaouais</div>
+        </li>
+        <li>
+          <a href="https://www.mcgill.ca/medadmissions/key-dates" target="_blank"><span class="link-icon">→</span> Dates clés admissions 2026</a>
+          <div class="link-desc">Deadlines, entrevues, offres d'admission</div>
+        </li>
+        <li>
+          <a href="https://www.mcgill.ca/medadmissions/applying/requirements/requirements-edu/degree-requirements" target="_blank"><span class="link-icon">→</span> Exigences académiques — Diplôme requis</a>
+          <div class="link-desc">Bachelor 120 crédits, GPA 3.5+, prérequis</div>
+        </li>
+        <li>
+          <a href="https://www.mcgill.ca/medadmissions/applying/categories/international-medical-graduates" target="_blank"><span class="link-icon">→</span> Voies IMG (2 ans et 4 ans)</a>
+          <div class="link-desc">Pour les diplômés en médecine de l'étranger</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- U of T -->
+    <div class="link-category">
+      <h3>🔵 University of Toronto — Médecine</h3>
+      <ul>
+        <li>
+          <a href="https://md.utoronto.ca/admission" target="_blank"><span class="link-icon">→</span> Admissions MD — Page principale</a>
+          <div class="link-desc">Critères, processus, exigences académiques</div>
+        </li>
+        <li>
+          <a href="https://md.utoronto.ca/international-applicants" target="_blank"><span class="link-icon">→</span> Candidats internationaux</a>
+          <div class="link-desc">Procédure WES, évaluation des diplômes étrangers</div>
+        </li>
+        <li>
+          <a href="https://www.wes.org/ca/" target="_blank"><span class="link-icon">→</span> WES Canada — Évaluation des diplômes</a>
+          <div class="link-desc">Organisme requis pour l'équivalence des relevés de notes</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- McMaster -->
+    <div class="link-category">
+      <h3>🟣 McMaster — Médecine</h3>
+      <ul>
+        <li>
+          <a href="https://mdprogram.mcmaster.ca/admissions" target="_blank"><span class="link-icon">→</span> Admissions MD — Page principale</a>
+          <div class="link-desc">Critères MCAT CARS, CASPer, processus</div>
+        </li>
+        <li>
+          <a href="https://mdprogram.mcmaster.ca/admissions/faq" target="_blank"><span class="link-icon">→</span> FAQ admissions</a>
+          <div class="link-desc">Questions fréquentes, candidats internationaux</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- uOttawa -->
+    <div class="link-category">
+      <h3>🟢 Université d'Ottawa</h3>
+      <ul>
+        <li>
+          <a href="https://www.uottawa.ca/study/undergraduate-studies/international-applicants" target="_blank"><span class="link-icon">→</span> Admissions internationales — 1er cycle</a>
+          <div class="link-desc">Processus d'admission, documents requis, deadlines</div>
+        </li>
+        <li>
+          <a href="https://www.uottawa.ca/study/undergraduate-studies/program-prerequisites/admission-requirements-international-applicants" target="_blank"><span class="link-icon">→</span> Prérequis par pays (Maroc inclus)</a>
+          <div class="link-desc">Exigences spécifiques selon le système éducatif d'origine</div>
+        </li>
+        <li>
+          <a href="https://www.uottawa.ca/etudes/communaut%C3%A9s-francophones-pilot-%C3%A9tudiant-ppecfsm" target="_blank"><span class="link-icon">→</span> PPECFSM à uOttawa</a>
+          <div class="link-desc">Comment participer au programme pilote via uOttawa</div>
+        </li>
+        <li>
+          <a href="https://med.uottawa.ca/undergraduate/admissions" target="_blank"><span class="link-icon">→</span> Faculté de médecine — Admissions</a>
+          <div class="link-desc">Programme MD (PR/citoyenneté requise)</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Tests & Portails -->
+    <div class="link-category">
+      <h3>📝 Tests & Portails d'admission</h3>
+      <ul>
+        <li>
+          <a href="https://students-residents.aamc.org/taking-mcat-exam/taking-mcat-exam" target="_blank"><span class="link-icon">→</span> MCAT — Site officiel AAMC</a>
+          <div class="link-desc">Inscription, dates, préparation</div>
+        </li>
+        <li>
+          <a href="https://acuityinsights.com/casper/" target="_blank"><span class="link-icon">→</span> CASPer — Acuity Insights</a>
+          <div class="link-desc">Inscription et pratique du test situationnel</div>
+        </li>
+        <li>
+          <a href="https://www.ouac.on.ca/" target="_blank"><span class="link-icon">→</span> OUAC — Portail Ontario (1er cycle)</a>
+          <div class="link-desc">Candidatures aux universités ontariennes</div>
+        </li>
+        <li>
+          <a href="https://www.ouac.on.ca/omsas/" target="_blank"><span class="link-icon">→</span> OMSAS — Portail MD Ontario</a>
+          <div class="link-desc">Candidatures centralisées aux facultés de médecine ontariennes</div>
+        </li>
+        <li>
+          <a href="https://www.carms.ca/" target="_blank"><span class="link-icon">→</span> CaRMS — Jumelage résidence</a>
+          <div class="link-desc">Système de jumelage pour la spécialisation après le MD</div>
+        </li>
+        <li>
+          <a href="https://www.afmc.ca/fr/learners/admissions-guide" target="_blank"><span class="link-icon">→</span> AFMC — Guide d'admission annuel</a>
+          <div class="link-desc">LA référence nationale pour les critères de chaque faculté</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- PPECFSM Établissements -->
+    <div class="link-category">
+      <h3>🏫 Établissements participant au PPECFSM</h3>
+      <ul>
+        <li>
+          <a href="https://www.uottawa.ca/etudes/communaut%C3%A9s-francophones-pilot-%C3%A9tudiant-ppecfsm" target="_blank"><span class="link-icon">→</span> Université d'Ottawa (Ontario)</a>
+        </li>
+        <li>
+          <a href="https://www.umoncton.ca/PPECFSM" target="_blank"><span class="link-icon">→</span> Université de Moncton (N.-B.)</a>
+        </li>
+        <li>
+          <a href="https://www.usainteanne.ca/futurs-etudiants/etudiants-internationaux/avant-de-venir-au-canada/ppecfsm" target="_blank"><span class="link-icon">→</span> Université Sainte-Anne (N.-É.)</a>
+        </li>
+        <li>
+          <a href="https://uhearst.ca/demande-ppecfsm/" target="_blank"><span class="link-icon">→</span> Université de Hearst (Ontario)</a>
+        </li>
+        <li>
+          <a href="https://www.collegelacite.ca/ppecfsm" target="_blank"><span class="link-icon">→</span> Collège La Cité (Ontario)</a>
+        </li>
+        <li>
+          <a href="https://collegeboreal.ca/futurs-etudiants/candidats-internationaux/programme-pilote-pour-les-etudiants-dans-les-communautes-francophones-en-situation-minoritaire-ppecfsm/" target="_blank"><span class="link-icon">→</span> Collège Boréal (Ontario)</a>
+        </li>
+        <li>
+          <a href="https://ccnb.ca/admission-et-inscription/programme-pilote-ppecfsm/" target="_blank"><span class="link-icon">→</span> CCNB (Nouveau-Brunswick)</a>
+        </li>
+        <li>
+          <a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/etudier-canada/permis-etudes/programme-pilote-etudiants-cfsm/eed-participants.html" target="_blank"><span class="link-icon">→</span> Liste complète des EED participants (IRCC)</a>
+          <div class="link-desc">Liste officielle de tous les établissements participants au programme</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Bourses & Financement -->
+    <div class="link-category">
+      <h3>💰 Bourses & Financement</h3>
+      <ul>
+        <li>
+          <a href="https://www.uottawa.ca/financial-aid-awards/scholarships-and-bursaries" target="_blank"><span class="link-icon">→</span> Bourses uOttawa</a>
+          <div class="link-desc">Bourses d'admission et bourses internationales</div>
+        </li>
+        <li>
+          <a href="https://www.mcgill.ca/studentaid/scholarships-aid" target="_blank"><span class="link-icon">→</span> Aide financière McGill</a>
+          <div class="link-desc">Bourses et aide pour le 1er cycle et médecine</div>
+        </li>
+        <li>
+          <a href="https://www.educanada.ca/scholarships-bourses/index.aspx?lang=fra" target="_blank"><span class="link-icon">→</span> EduCanada — Bourses pour étrangers</a>
+          <div class="link-desc">Répertoire des bourses canadiennes pour étudiants internationaux</div>
+        </li>
+        <li>
+          <a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/etudier-canada.html" target="_blank"><span class="link-icon">→</span> Étudier au Canada — IRCC (page principale)</a>
+          <div class="link-desc">Toutes les informations officielles pour les étudiants étrangers</div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="brand">🇲🇦 → 🇨🇦 Guide Médecine Canada 2026</div>
+  <p style="max-width:700px;margin:0 auto">Créé pour les étudiants internationaux francophones, notamment du Maroc. Les données proviennent des sources officielles (AFMC, IRCC, sites universitaires) et sont susceptibles de changer. Vérifie toujours les informations les plus récentes directement auprès des universités et d'IRCC. Ce guide ne constitue pas un avis juridique ou en immigration.</p>
+</footer>
+
+<script>
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.sticky-nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+</body>
+</html>
